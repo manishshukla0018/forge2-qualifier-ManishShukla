@@ -45,3 +45,11 @@ Add original evidence under `evidence/hermes-memory/` showing a fact stored in o
 ## Required Slack Round-Trip Proof
 
 Add a screenshot under `screenshots/slack-round-trip/` showing successful `auth.test`, `chat.postMessage`, and `conversations.history` outputs. Redact token values only; retain the successful response and context.
+
+To generate that proof without committing secrets, set `SLACK_BOT_TOKEN` and `SLACK_CHANNEL_ID` in your local shell, then run:
+
+```powershell
+.\scripts\slack-roundtrip.ps1
+```
+
+The script writes a redacted `evidence/slack-roundtrip-output.json` file and prints a success message. Screenshot the terminal output plus the matching Slack channel message.
