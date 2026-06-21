@@ -1,0 +1,16 @@
+{
+  "agents": {
+    "defaults": {
+      "workspace": ".",
+      "model": { "primary": "ollama/qwen2.5-coder" }
+    }
+  },
+  "channels": {
+    "slack": {
+      "enabled": true,
+      "mode": "socket",
+      "appToken": { "source": "env", "provider": "default", "id": "SLACK_APP_TOKEN" },
+      "botToken": { "source": "env", "provider": "default", "id": "SLACK_BOT_TOKEN" }
+    }
+  }
+}

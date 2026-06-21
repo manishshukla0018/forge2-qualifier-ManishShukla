@@ -37,6 +37,22 @@ OpenClaw is responsible for implementation execution inside the planned workstre
 4. Documentation fourth: add README, architecture notes, agent log, and screenshots folder.
 5. Verification last: run available checks, inspect git history, and report deployment blockers.
 
+## Slack Channel Scheme
+
+- `#sprint-main`: the human gives Hermes goals; plans, decisions, approvals, and final status are visible here.
+- `#agent-coder`: Hermes delegates implementation; OpenClaw posts code and reports here.
+- `#agent-log`: raw activity, round-trip output, memory checks, and autonomous runs are recorded here.
+
+The required public sequence is Human → Hermes plan → OpenClaw implementation → verification/result. Work must not move into private DMs.
+
+## Free Model Routing
+
+- Hermes uses the Google Gemini free tier with `gemini-2.5-flash` because planning benefits from its larger context.
+- OpenClaw uses local Ollama with `qwen2.5-coder`, keeping coding runs free and avoiding cloud rate limits.
+- Groq's free tier is the fallback when the primary provider is unavailable.
+
+Keys come only from variables listed in `.env.example`. Runtime/provider logs must separately prove the configured models were actually used.
+
 ## Folder Structure
 
 ```text
@@ -44,6 +60,12 @@ OpenClaw is responsible for implementation execution inside the planned workstre
 |-- README.md
 |-- ARCHITECTURE.md
 |-- agent-log.md
+|-- openclaw.json
+|-- hermes-config.yaml
+|-- .env.example
+|-- skills/
+|   `-- hermes-orchestrator/SKILL.md
+|-- evidence/
 |-- screenshots/
 |   |-- README.md
 |   `-- kanban-board.svg

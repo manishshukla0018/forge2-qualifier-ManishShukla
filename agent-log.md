@@ -1,10 +1,66 @@
 # Agent Log
 
+This file separates verbatim conversation evidence from retrospective project notes. Text under **Verified Conversation Excerpts** is copied exactly from a real interaction. Historical summaries elsewhere in this file are not presented as transcripts.
+
+## Verified Conversation Excerpts
+
+### Evidence-remediation request — 2026-06-21 (Asia/Calcutta)
+
+**Human**
+
+> 1. OpenClaw was used
+>
+> Need:
+>
+> openclaw.json
+>
+> in repo.
+>
+> 2. Hermes was used
+>
+> Need:
+>
+> skills/&lt;name&gt;/SKILL.md
+>
+> in repo.
+>
+> 3. Slack Loop Proof
+>
+> Need screenshots showing:
+>
+> Human
+>  ↓
+> Hermes plan
+>  ↓
+> OpenClaw code
+>  ↓
+> Result
+>
+> The handbook explicitly requires Slack evidence.
+>
+> 4. Agent Log
+>
+> Need real conversation excerpts in:
+>
+> agent-log.md
+>
+> not just project notes.
+>
+> 5. Autonomous Run
+>
+> Need proof Hermes ran by itself at least once.        add all these things to my project
+
+**Repository agent**
+
+> I’ll audit the repository for existing OpenClaw/Hermes traces and Slack artifacts, then add the required files using only evidence we can genuinely substantiate—no fabricated conversations or screenshots.
+
+This excerpt proves the remediation request and repository response. It does **not** by itself prove a historical Hermes → OpenClaw run; that requires the Slack and autonomous-run evidence listed in `evidence/README.md`.
+
 ## Human Request
 
 Build and ship a complete Trello-style Kanban application for Forge 2 using Laravel 12, SQLite, React, Vite, a public GitHub repository, frontend deployment to Vercel, backend deployment to Render/Railway, complete documentation, screenshots, and at least 10 meaningful commits.
 
-## Planning
+## Historical Planning Summary (not a transcript)
 
 The work was split into major milestones:
 
@@ -16,13 +72,13 @@ The work was split into major milestones:
 6. Add README, architecture documentation, agent log, and screenshots folder.
 7. Commit incrementally and verify what the local environment allows.
 
-## Task Delegation
+## Historical Task Delegation Summary (not a transcript)
 
 Hermes owned requirements interpretation, architecture, workflow, integration, documentation quality, and final readiness checks.
 
 OpenClaw owned implementation tasks: backend files, frontend files, deploy configs, UI styling, API integration, and repository artifacts.
 
-## Progress Updates
+## Historical Progress Summary (not a transcript)
 
 - Initialized Laravel 12-style backend structure under `backend/`.
 - Added SQLite configuration and deployment-friendly `.env.example`.

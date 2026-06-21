@@ -1,0 +1,24 @@
+# Sanitized, repository-safe Hermes configuration. Supply secrets through env vars.
+model:
+  provider: google
+  id: gemini-2.5-flash
+  base_url: https://generativelanguage.googleapis.com/v1beta/openai/
+  api_key_env: GEMINI_API_KEY
+memory:
+  enabled: true
+  persistent: true
+skills:
+  paths: [skills]
+slack:
+  enabled: true
+  bot_token_env: SLACK_BOT_TOKEN
+  app_token_env: SLACK_APP_TOKEN
+  channels:
+    planning: sprint-main
+    coding: agent-coder
+    audit: agent-log
+# Run the real schedule with Hermes. This example is not proof of execution.
+autonomous_run:
+  task: "Post a one-line progress update to #agent-log"
+  interval_minutes: 10
+  evidence_directory: evidence/autonomous-run

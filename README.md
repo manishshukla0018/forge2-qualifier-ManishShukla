@@ -21,7 +21,20 @@ Forge 2 Kanban is a Trello-style Kanban application with a Laravel 12 API backen
 backend/   Laravel 12 API, SQLite migrations, models, controllers, seeders
 frontend/  React + Vite Kanban application
 screenshots/  Submission screenshots and visual references
+skills/       Hermes orchestration skill
+evidence/     Agent-use, Slack-loop, and autonomous-run evidence index
+openclaw.json OpenClaw/Hermes project configuration
 ```
+
+## Agent Workflow Evidence
+
+- OpenClaw configuration: `openclaw.json`
+- Sanitized Hermes configuration: `hermes-config.yaml`
+- Hermes skill: `skills/hermes-orchestrator/SKILL.md`
+- Verbatim conversation excerpts: `agent-log.md`
+- Evidence status and capture requirements: `evidence/README.md`
+
+Original Slack screenshots and an exported autonomous Hermes run must be added before claiming those handbook requirements as complete. Templates and generated chat mockups are not accepted as proof.
 
 ## Backend Installation
 
@@ -81,9 +94,11 @@ php artisan test
 
 | Service | URL |
 | --- | --- |
-| Frontend Vercel | Pending deployment credentials |
-| Backend Render/Railway | Pending deployment credentials |
-| Public GitHub repository | Pending GitHub remote creation |
+| Frontend Vercel | https://forge2-qualifier-manish-shukla.vercel.app |
+| Backend Render | https://forge2-qualifier-manishshukla.onrender.com |
+| Public GitHub repository | https://github.com/manishshukla0018/forge2-qualifier-ManishShukla |
+
+The GitHub repository was confirmed public on 2026-06-21. On the same date, the Vercel frontend and Render health endpoint returned HTTP 200, and a temporary live API smoke test verified card creation, editing, movement, member/tag assignment, due dates, and overdue state before cleaning up its test board.
 
 ## Deployment Notes
 
