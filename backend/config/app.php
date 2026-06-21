@@ -11,5 +11,4 @@ return [
     'faker_locale' => 'en_US',
     'key' => env('APP_KEY'),
     'cipher' => 'AES-256-CBC',
-    'providers' => require __DIR__.'/../bootstrap/providers.php',
 ];
