@@ -9,3 +9,4 @@ vendor/
 dist/
 .vercel/
 .phpunit.cache/
+.phpunit.result.cache
