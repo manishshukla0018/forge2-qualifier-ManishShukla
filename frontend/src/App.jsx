@@ -22,6 +22,8 @@ function App() {
   const [drafts, setDrafts] = useState({});
   const [editingCard, setEditingCard] = useState(null);
   const [cardForm, setCardForm] = useState(emptyCardForm);
+  const [memberForm, setMemberForm] = useState({ name: '', email: '', avatar_color: colorOptions[0] });
+  const [tagForm, setTagForm] = useState({ name: '', color: colorOptions[1] });
 
   const listsById = useMemo(() => new Map((board?.lists ?? []).map((list) => [list.id, list])), [board]);
 
@@ -125,6 +127,30 @@ function App() {
     await refreshBoard();
   }
 
+  async function createMember(event) {
+    event.preventDefault();
+
+    if (!memberForm.name.trim() || !memberForm.email.trim()) {
+      return;
+    }
+
+    const member = await api.createMember(memberForm);
+    setMembers((current) => [...current, member].sort((a, b) => a.name.localeCompare(b.name)));
+    setMemberForm({ name: '', email: '', avatar_color: colorOptions[0] });
+  }
+
+  async function createTag(event) {
+    event.preventDefault();
+
+    if (!tagForm.name.trim()) {
+      return;
+    }
+
+    const tag = await api.createTag(tagForm);
+    setTags((current) => [...current, tag].sort((a, b) => a.name.localeCompare(b.name)));
+    setTagForm({ name: '', color: colorOptions[1] });
+  }
+
   function toggleTag(tagId) {
     setCardForm((current) => ({
       ...current,
@@ -164,6 +190,16 @@ function App() {
         </div>
       </header>
 
+      <ResourcePanel
+        memberForm={memberForm}
+        setMemberForm={setMemberForm}
+        tagForm={tagForm}
+        setTagForm={setTagForm}
+        colorOptions={colorOptions}
+        createMember={createMember}
+        createTag={createTag}
+      />
+
       <section className="board" aria-label="Kanban board">
         {board?.lists?.map((list) => (
           <ListColumn
@@ -195,6 +231,67 @@ function App() {
         />
       )}
     </main>
+  );
+}
+
+function ResourcePanel({
+  memberForm,
+  setMemberForm,
+  tagForm,
+  setTagForm,
+  colorOptions,
+  createMember,
+  createTag,
+}) {
+  return (
+    <section className="resource-panel" aria-label="Board resources">
+      <form onSubmit={createMember}>
+        <strong>Member</strong>
+        <input
+          value={memberForm.name}
+          onChange={(event) => setMemberForm((current) => ({ ...current, name: event.target.value }))}
+          placeholder="Name"
+          aria-label="Member name"
+        />
+        <input
+          type="email"
+          value={memberForm.email}
+          onChange={(event) => setMemberForm((current) => ({ ...current, email: event.target.value }))}
+          placeholder="Email"
+          aria-label="Member email"
+        />
+        <select
+          value={memberForm.avatar_color}
+          onChange={(event) => setMemberForm((current) => ({ ...current, avatar_color: event.target.value }))}
+          aria-label="Member color"
+        >
+          {colorOptions.map((color) => (
+            <option key={color} value={color}>{color}</option>
+          ))}
+        </select>
+        <button type="submit" aria-label="Add member"><Plus size={16} /></button>
+      </form>
+
+      <form onSubmit={createTag}>
+        <strong>Label</strong>
+        <input
+          value={tagForm.name}
+          onChange={(event) => setTagForm((current) => ({ ...current, name: event.target.value }))}
+          placeholder="Label name"
+          aria-label="Label name"
+        />
+        <select
+          value={tagForm.color}
+          onChange={(event) => setTagForm((current) => ({ ...current, color: event.target.value }))}
+          aria-label="Label color"
+        >
+          {colorOptions.map((color) => (
+            <option key={color} value={color}>{color}</option>
+          ))}
+        </select>
+        <button type="submit" aria-label="Add label"><Plus size={16} /></button>
+      </form>
+    </section>
   );
 }
 

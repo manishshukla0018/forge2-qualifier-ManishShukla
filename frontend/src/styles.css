@@ -89,6 +89,53 @@ button {
   align-items: start;
 }
 
+.resource-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.resource-panel form {
+  display: grid;
+  grid-template-columns: auto minmax(120px, 1fr) minmax(120px, 1fr) minmax(104px, auto) 42px;
+  gap: 8px;
+  align-items: center;
+  border: 1px solid #d8e0ea;
+  border-radius: 8px;
+  padding: 10px;
+  background: #fff;
+}
+
+.resource-panel form + form {
+  grid-template-columns: auto minmax(120px, 1fr) minmax(104px, auto) 42px;
+}
+
+.resource-panel strong {
+  color: #344054;
+}
+
+.resource-panel input,
+.resource-panel select {
+  min-width: 0;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 9px 10px;
+  background: #fff;
+  color: #172033;
+}
+
+.resource-panel button {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  min-height: 38px;
+  border: 0;
+  border-radius: 6px;
+  background: #0f766e;
+  color: #fff;
+}
+
 .list-column {
   display: flex;
   flex-direction: column;
@@ -403,6 +450,19 @@ button {
 
   .board {
     grid-template-columns: 1fr;
+  }
+
+  .resource-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .resource-panel form,
+  .resource-panel form + form {
+    grid-template-columns: 1fr;
+  }
+
+  .resource-panel button {
+    width: 100%;
   }
 
   .list-column {

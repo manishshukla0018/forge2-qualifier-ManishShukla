@@ -8,7 +8,7 @@ RUN apt-get update \
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /app
-COPY composer.json composer.lock* ./
+COPY composer.json ./
 RUN composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader --no-scripts
 
 COPY . .
